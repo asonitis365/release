@@ -23,7 +23,7 @@ on:
         description: ''
         type: boolean
 jobs:
-  deploy:
+  deployFuncCalled:
     runs-on: self-hosted
     steps:
     - name: checkout
@@ -32,13 +32,13 @@ jobs:
     - name: Run a one-line script
       run: Called Funciton!
 
-    - name: FunctionApp
-      #if: ${{ inputs.Kind }} == FunctionApp 
-      uses: ./actions/functionapp
-      with:
-        ResourceName: ${{inputs.ResourceName}}
-        ResourceGroupName: ${{inputs.ResourceGroupName}}
-        DeployInfrastructure: ${{inputs.DeployInfrastructure}}
+    # - name: FunctionApp
+    #   #if: ${{ inputs.Kind }} == FunctionApp 
+    #   uses: ./actions/functionapp
+    #   with:
+    #     ResourceName: ${{inputs.ResourceName}}
+    #     ResourceGroupName: ${{inputs.ResourceGroupName}}
+    #     DeployInfrastructure: ${{inputs.DeployInfrastructure}}
 
     # - name: Deploy Bicep Infrastructure
     #   if: ${{ inputs.kind  }} == Infrastructure
