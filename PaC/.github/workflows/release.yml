@@ -1,0 +1,49 @@
+name: release
+
+on:
+  workflow_call:
+    inputs:
+      Kind:
+        description: ''
+        required: true
+        type: string
+      ResourceName:
+        description: ''
+        type: string
+      ResourceGroupName:
+        description: ''
+        type: string
+      BicepFile:
+       description: ''
+       type: string
+      ParamFile:
+        description: ''
+        type: string
+      DeployInfrastructure:
+        description: ''
+        type: boolean
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: Run a one-line script
+      run: Called Funciton!
+
+    - name: FunctionApp
+      #if: ${{ inputs.Kind }} == FunctionApp 
+      uses: ./actions/functionapp
+      with:
+        ResourceName: ${{inputs.ResourceName}}
+        ResourceGroupName: ${{inputs.ResourceGroupName}}
+        DeployInfrastructure: ${{inputs.DeployInfrastructure}}
+
+    # - name: Deploy Bicep Infrastructure
+    #   if: ${{ inputs.kind  }} == Infrastructure
+    #   uses: ./actions/.github/infrastructure
+    #   with:
+    #     BicepFile: ${{inputs.BicepFile}}
+    #     ParamFile: ${{inputs.ParamFile}}
+      
