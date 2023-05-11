@@ -26,19 +26,14 @@ jobs:
   deployFuncCalled:
     runs-on: self-hosted
     steps:
-    - name: checkout
-      uses: actions/checkout@v3
 
-    - name: Run a one-line script
-      run: Called Funciton!
-
-    # - name: FunctionApp
-    #   #if: ${{ inputs.Kind }} == FunctionApp 
-    #   uses: ./actions/functionapp
-    #   with:
-    #     ResourceName: ${{inputs.ResourceName}}
-    #     ResourceGroupName: ${{inputs.ResourceGroupName}}
-    #     DeployInfrastructure: ${{inputs.DeployInfrastructure}}
+    - name: FunctionApp_Testing
+      #if: ${{ inputs.Kind }} == FunctionApp 
+      uses: ./actions/functionapp
+      with:
+        ResourceName: ${{inputs.ResourceName}}
+        ResourceGroupName: ${{inputs.ResourceGroupName}}
+        DeployInfrastructure: ${{inputs.DeployInfrastructure}}
 
     # - name: Deploy Bicep Infrastructure
     #   if: ${{ inputs.kind  }} == Infrastructure
